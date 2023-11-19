@@ -27,8 +27,8 @@
     <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#主体对象">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事物"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#人物"/>
+        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事件的主体"/>
+        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事件的客体"/>
     </owl:ObjectProperty>
     
 
@@ -42,29 +42,18 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#包含关系 -->
+    <!-- http://knowledgegraph-official-document#关联机构 -->
 
-    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#包含关系">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事物"/>
+    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#关联机构">
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
+        <rdfs:range rdf:resource="http://knowledgegraph-official-document#机构"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://knowledgegraph-official-document#因果关系 -->
+    <!-- http://knowledgegraph-official-document#发布位置 -->
 
-    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#因果关系">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事物"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://knowledgegraph-official-document#地理位置 -->
-
-    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#地理位置">
+    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#发布位置">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
         <rdfs:range rdf:resource="http://knowledgegraph-official-document#地点"/>
@@ -72,21 +61,32 @@
     
 
 
+    <!-- http://knowledgegraph-official-document#客体对象 -->
+
+    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#客体对象">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
+        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事件的客体"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://knowledgegraph-official-document#工作单位 -->
 
     <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#工作单位">
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#人物"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#报社"/>
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件的主体"/>
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件的客体"/>
         <rdfs:range rdf:resource="http://knowledgegraph-official-document#机构"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://knowledgegraph-official-document#时序关系 -->
+    <!-- http://knowledgegraph-official-document#来源 -->
 
-    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#时序关系">
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#事物"/>
+    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#来源">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
+        <rdfs:range rdf:resource="http://knowledgegraph-official-document#主题网站"/>
     </owl:ObjectProperty>
     
 
@@ -95,15 +95,6 @@
 
     <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#版权归属">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#主题网站"/>
-        <rdfs:range rdf:resource="http://knowledgegraph-official-document#机构"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://knowledgegraph-official-document#组织机构 -->
-
-    <owl:ObjectProperty rdf:about="http://knowledgegraph-official-document#组织机构">
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
         <rdfs:range rdf:resource="http://knowledgegraph-official-document#机构"/>
     </owl:ObjectProperty>
     
@@ -129,6 +120,14 @@
     
 
 
+    <!-- http://knowledgegraph-official-document#主题词 -->
+
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#主题词">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://knowledgegraph-official-document#事件描述 -->
 
     <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#事件描述">
@@ -148,9 +147,18 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#保密期限 -->
+    <!-- http://knowledgegraph-official-document#公开期限 -->
 
-    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#保密期限">
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#公开期限">
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
+        <rdfs:comment>通用公文要素</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://knowledgegraph-official-document#公开等级 -->
+
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#公开等级">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
         <rdfs:comment>通用公文要素</rdfs:comment>
     </owl:DatatypeProperty>
@@ -162,17 +170,6 @@
     <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#公文网址">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://knowledgegraph-official-document#印发日期 -->
-
-    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#印发日期">
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
-        <rdfs:comment>可作为事件的时间</rdfs:comment>
-        <rdfs:comment>通用公文要素</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -192,6 +189,17 @@
 
     <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#印章">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
+        <rdfs:comment>通用公文要素</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://knowledgegraph-official-document#发布时间 -->
+
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#发布时间">
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#事件"/>
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
+        <rdfs:comment>可作为事件的时间</rdfs:comment>
         <rdfs:comment>通用公文要素</rdfs:comment>
     </owl:DatatypeProperty>
     
@@ -224,11 +232,11 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#密级 -->
+    <!-- http://knowledgegraph-official-document#完成时间 -->
 
-    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#密级">
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#完成时间">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
-        <rdfs:comment>通用公文要素</rdfs:comment>
+        <rdfs:comment>业务公文要素</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -236,8 +244,8 @@
     <!-- http://knowledgegraph-official-document#成文日期 -->
 
     <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#成文日期">
-        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
-        <rdfs:comment>通用公文要素</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:comment>业务要素</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -247,6 +255,16 @@
     <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#抄送机关">
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
         <rdfs:comment>通用公文要素</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://knowledgegraph-official-document#时效性关键词 -->
+
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#时效性关键词">
+        <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment>用于推理机验证时效性</rdfs:comment>
     </owl:DatatypeProperty>
     
 
@@ -269,6 +287,14 @@
     
 
 
+    <!-- http://knowledgegraph-official-document#目的 -->
+
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#目的">
+        <rdfs:comment>业务要素</rdfs:comment>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://knowledgegraph-official-document#签发人 -->
 
     <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#签发人">
@@ -286,6 +312,12 @@
         <rdfs:domain rdf:resource="http://knowledgegraph-official-document#公文"/>
         <rdfs:comment>通用公文要素</rdfs:comment>
     </owl:DatatypeProperty>
+    
+
+
+    <!-- http://knowledgegraph-official-document#网站分类标识 -->
+
+    <owl:DatatypeProperty rdf:about="http://knowledgegraph-official-document#网站分类标识"/>
     
 
 
@@ -365,31 +397,23 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#事物 -->
+    <!-- http://knowledgegraph-official-document#事件的主体 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#事物"/>
+    <owl:Class rdf:about="http://knowledgegraph-official-document#事件的主体"/>
     
 
 
-    <!-- http://knowledgegraph-official-document#人事任命 -->
+    <!-- http://knowledgegraph-official-document#事件的客体 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#人事任命">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#事件的客体"/>
+    
+
+
+    <!-- http://knowledgegraph-official-document#人事任命公文 -->
+
+    <owl:Class rdf:about="http://knowledgegraph-official-document#人事任命公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#军事公文"/>
         <rdfs:comment>领导小组，警衔任命</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#人物 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#人物"/>
-    
-
-
-    <!-- http://knowledgegraph-official-document#作者 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#作者">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#人物"/>
     </owl:Class>
     
 
@@ -418,51 +442,18 @@
     
 
 
+    <!-- http://knowledgegraph-official-document#其他政府公文 -->
+
+    <owl:Class rdf:about="http://knowledgegraph-official-document#其他政府公文">
+        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#公文"/>
+    </owl:Class>
+    
+
+
     <!-- http://knowledgegraph-official-document#军事公文 -->
 
     <owl:Class rdf:about="http://knowledgegraph-official-document#军事公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#业务类型公文"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#军事批复 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#军事批复">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#军事公文"/>
-        <rdfs:comment>机场新建</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#军官 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#军官">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#人物"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#军工集团 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#军工集团">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#机构"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#军方报社 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#军方报社">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#报社"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#农村物流 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#农村物流">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#物流公文"/>
     </owl:Class>
     
 
@@ -485,14 +476,6 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#冷链物流 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#冷链物流">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#物流公文"/>
-    </owl:Class>
-    
-
-
     <!-- http://knowledgegraph-official-document#函 -->
 
     <owl:Class rdf:about="http://knowledgegraph-official-document#函">
@@ -502,9 +485,9 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#创新改革 -->
+    <!-- http://knowledgegraph-official-document#创新改革公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#创新改革">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#创新改革公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#科技公文"/>
     </owl:Class>
     
@@ -515,14 +498,6 @@
     <owl:Class rdf:about="http://knowledgegraph-official-document#命令">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#通用类型公文"/>
         <rdfs:comment>适用于公布行政法规和规章、宣布施行重大强制性措施、批准授予和晋升衔级、嘉奖有关单位和人员</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#国防科技 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#国防科技">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#科技公文"/>
     </owl:Class>
     
 
@@ -541,17 +516,18 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#官方报社 -->
+    <!-- http://knowledgegraph-official-document#建造批复公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#官方报社">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#报社"/>
+    <owl:Class rdf:about="http://knowledgegraph-official-document#建造批复公文">
+        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#军事公文"/>
+        <rdfs:comment>机场新建</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://knowledgegraph-official-document#征兵通知 -->
+    <!-- http://knowledgegraph-official-document#征兵通知公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#征兵通知">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#征兵通知公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#军事公文"/>
         <rdfs:comment>空军征兵</rdfs:comment>
     </owl:Class>
@@ -567,9 +543,9 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#战功命令 -->
+    <!-- http://knowledgegraph-official-document#战功奖励公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#战功命令">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#战功奖励公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#军事公文"/>
         <rdfs:comment>战功描述</rdfs:comment>
     </owl:Class>
@@ -594,23 +570,9 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#报社 -->
+    <!-- http://knowledgegraph-official-document#新能源公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#报社"/>
-    
-
-
-    <!-- http://knowledgegraph-official-document#政府类型公文 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#政府类型公文">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#公文"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#新能源 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#新能源">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#新能源公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#科技公文"/>
     </owl:Class>
     
@@ -622,35 +584,10 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#武器研制 -->
+    <!-- http://knowledgegraph-official-document#环境保护公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#武器研制">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#军事公文"/>
-        <rdfs:comment>导弹研制</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#物流公文 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#物流公文">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#业务类型公文"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#环境安全 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#环境安全">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#环境保护公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#安全公文"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#电子商务 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#电子商务">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#物流公文"/>
     </owl:Class>
     
 
@@ -659,6 +596,14 @@
 
     <owl:Class rdf:about="http://knowledgegraph-official-document#科技公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#业务类型公文"/>
+    </owl:Class>
+    
+
+
+    <!-- http://knowledgegraph-official-document#科技探索公文 -->
+
+    <owl:Class rdf:about="http://knowledgegraph-official-document#科技探索公文">
+        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#科技公文"/>
     </owl:Class>
     
 
@@ -672,26 +617,10 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#绿色物流 -->
+    <!-- http://knowledgegraph-official-document#网络安全公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#绿色物流">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#物流公文"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#网络安全 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#网络安全">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#网络安全公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#安全公文"/>
-    </owl:Class>
-    
-
-
-    <!-- http://knowledgegraph-official-document#航空探月 -->
-
-    <owl:Class rdf:about="http://knowledgegraph-official-document#航空探月">
-        <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#科技公文"/>
     </owl:Class>
     
 
@@ -714,9 +643,9 @@
     
 
 
-    <!-- http://knowledgegraph-official-document#质量安全 -->
+    <!-- http://knowledgegraph-official-document#质量安全公文 -->
 
-    <owl:Class rdf:about="http://knowledgegraph-official-document#质量安全">
+    <owl:Class rdf:about="http://knowledgegraph-official-document#质量安全公文">
         <rdfs:subClassOf rdf:resource="http://knowledgegraph-official-document#安全公文"/>
         <rdfs:comment>工业生产、产品质量安全</rdfs:comment>
     </owl:Class>
@@ -798,17 +727,13 @@
 
     <!-- http://knowledgegraph-official-document#中国军网-解放军报 -->
 
-    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#中国军网-解放军报">
-        <rdf:type rdf:resource="http://knowledgegraph-official-document#军方报社"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#中国军网-解放军报"/>
     
 
 
     <!-- http://knowledgegraph-official-document#中国电子信息产业集团 -->
 
-    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#中国电子信息产业集团">
-        <rdf:type rdf:resource="http://knowledgegraph-official-document#军工集团"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#中国电子信息产业集团"/>
     
 
 
@@ -824,9 +749,7 @@
 
     <!-- http://knowledgegraph-official-document#中国电子科技集团有限公司 -->
 
-    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#中国电子科技集团有限公司">
-        <rdf:type rdf:resource="http://knowledgegraph-official-document#军工集团"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#中国电子科技集团有限公司"/>
     
 
 
@@ -850,9 +773,7 @@
 
     <!-- http://knowledgegraph-official-document#习大大 -->
 
-    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#习大大">
-        <rdf:type rdf:resource="http://knowledgegraph-official-document#军官"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#习大大"/>
     
 
 
@@ -893,9 +814,7 @@
 
     <!-- http://knowledgegraph-official-document#新华社 -->
 
-    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#新华社">
-        <rdf:type rdf:resource="http://knowledgegraph-official-document#官方报社"/>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="http://knowledgegraph-official-document#新华社"/>
 </rdf:RDF>
 
 
