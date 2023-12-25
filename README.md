@@ -1,10 +1,10 @@
 Copyright 2023 by Nanjing University of Posts and Telecommunications. 
 
-Time: 19/11/2023  Authors:  Wenbo Zhou & Weizhuo Li & Bianyu Yang 
+Time: 25/12/2023  Authors:  Wenbo Zhou & Weizhuo Li & Bianyu Yang 
 
 Mail: b20090724@njupt.edu.cn & liweizhuo@amss.ac.cn & b20090721@njupt.edu.cn
 
-Description: [ODKG](http://www.odkg.com.cn) is an official document knowledge graph. You can use its original resources and visit the [website](http://www.odkg.com.cn/odkg/) to enjoy its services (User name: admin Password: 123456).
+Description: [ODKG](http://www.odkg.com.cn) is an official document knowledge graph. You can use its original resources and visit the [website](http://www.odkg.com.cn/) to enjoy its services (User name: admin Password: 123456).
 
 ## 1. Introduction：
 In this project, we present an official document knowledge graph, namely ODKG, which aims to collect the documents for effective management. 
@@ -15,7 +15,8 @@ the efficiency of their document management.
 
 
 ## 2. Usage:
-ODKG consists of five important resources, including Ontology (Knowledge Schema), Statistics of official documents, Structured document, Test data for document archiving and element extraction.
+ODKG consists of six important resources, including Ontology (Knowledge Schema), Statistics of official documents, Structured document, Synonym dictionary of knowledge alignments, Test corpus for document archiving and element extraction.
+
 
 ### Ontology:
 We design one lightweight ontology of documents. It can bring a well-defined schema of collected documents so that these documents could share more linkage with each other.
